@@ -1,0 +1,41 @@
+<!-- Hero Start -->
+<div class="cover p-5 text-center bg-image rounded-3" style="
+    background-image: url('https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');">
+  <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="text-white">
+        <h1 class="mb-3"><%= @list.name %></h1>
+        <% if @list.movies.empty? %>
+          <div class="mb-3">You haven't saved any movies yet!</div>
+        <% else %>
+          <div class="mb-3"> <%= pluralize(@list.movies.size, "movie") %> </div>
+        <% end %>
+        <button class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#new_movie_modal">Add a movie</button>
+        <!-- Render to bookmarks/modal -->
+        <%= render "bookmarks/modal", list: @list, bookmark: @bookmark %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Hero End -->
+<!-- Main container Start -->
+<div class="container py-5">
+  <!-- Cards container Start -->
+  <div class="container">
+    <!-- Card Template Start (render??) -->
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="card-body bookmark d-flex">
+        <!-- bookmark content -->
+        <!-- link_to bookmark delete -->
+        </div>
+      </div>
+</div>
+    <!-- Card Template End -->
+  </div>
+  <!-- Cards container End -->
+</div>
+<!-- Main container End -->
