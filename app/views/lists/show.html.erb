@@ -10,7 +10,7 @@
         <% else %>
           <div class="mb-3"> <%= pluralize(@list.movies.size, "movie") %> </div>
         <% end %>
-        <button class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#new_movie_modal">Add a movie</button>
+        <button class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#new_movie_modal"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Add a movie</button>
         <!-- Render to bookmarks/modal -->
         <%= render "bookmarks/modal", list: @list, bookmark: @bookmark %>
       </div>
@@ -22,20 +22,13 @@
 <div class="container py-5">
   <!-- Cards container Start -->
   <div class="container">
-    <!-- Card Template Start (render??) -->
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <div class="card-body bookmark d-flex">
-        <!-- bookmark content -->
-        <!-- link_to bookmark delete -->
-        </div>
-      </div>
-</div>
-    <!-- Card Template End -->
+     <% @list.movies.each do |movie| %>
+        <p><% bookmark = Bookmark.find_by(list: @list, movie: movie) %></p>
+        <p><%= image_tag movie.poster_url, alt: movie.title, class: "movie-img rounded-top" %></p>
+        <p><%= movie.title %></p>
+        <p><%= movie.overview %></p>
+        <p><%= bookmark.comment %></p>
+        <p><%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %></p>
+      <% end %>
   </div>
-  <!-- Cards container End -->
 </div>
-<!-- Main container End -->
