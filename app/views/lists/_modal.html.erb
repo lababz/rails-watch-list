@@ -1,26 +1,22 @@
-<!-- Modal Start -->
 <div class="modal fade" id="new_list_modal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
-      <!-- Modal Header Start -->
       <div class="modal-header">
         <h3 class="modal-title">Add a new list</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <%= simple_form_for list do |f| %>
-        <!-- Modal Body Start -->
         <div class="modal-body">
           <%= f.input :name, placeholder: "Enter a list name (ie: Drama)" %>
           <%= f.input :photo, as: :file %>
-          <%= f.button :submit, class: "btn btn-primary" %>
         </div>
-        <!-- Modal Footer Start -->
         <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-xmark" style="color: #ffffff;"></i> Cancel</button>
-         <%= f.submit "Add list", class: "btn btn-primary" %>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><span class="fa-solid fa-xmark"></span> Cancel</button>
+          <%= button_tag type: 'submit', class: "button postfix btn btn-outline-success" do %>
+            <i class="fa-solid fa-plus"></i><span> Add list</span>
+          <% end %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-<!-- Modal End -->

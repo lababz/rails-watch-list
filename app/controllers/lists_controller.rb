@@ -1,8 +1,8 @@
 class ListsController < ApplicationController
   before_action :set_list, only: :show # [:show, :destroy]
+  before_action :set_lists, only: [:index, :create]
 
   def index
-    @lists = List.all
     @list = List.new
   end
 
@@ -17,9 +17,8 @@ class ListsController < ApplicationController
   def create # POST
     @list = List.new(list_params)
     if @list.save
-      redirect_to @list, notice: "✅ list was successfully created." # redirect_to list_path(@list)
+      redirect_to @list, notice: "✅ list was successfully created."
     else
-      @lists = List.all
       render :index, status: :unprocessable_entity
     end
   end
@@ -32,5 +31,9 @@ class ListsController < ApplicationController
 
   def set_list
     @list = List.find(params[:id])
+  end
+
+  def set_lists
+    @lists = List.all
   end
 end

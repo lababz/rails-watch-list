@@ -2,13 +2,14 @@ body {
   background-color: $light-gray;
 }
 
-h1, h2 {
-  color: $light-gray;
+h1 {
+  color: $white;
 }
 
 h2 {
   font-style: italic;
   font-size: 24px;
+  color: $light-gray;
 }
 
 h3 {

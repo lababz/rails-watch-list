@@ -15,8 +15,10 @@
         </div>
         <!-- Modal Footer Start -->
         <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-xmark" style="color: #ffffff;"></i> Cancel</button>
-         <%= f.submit "Add movie", class: "btn btn-primary" %>
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><span class="fa-solid fa-xmark"></span> Cancel</button>
+        <%= button_tag type: 'submit', class: "button postfix btn btn-outline-success" do %>
+          <i class="fa-solid fa-plus"></i><span> Add a movie</span>
+          <% end %>
         </div>
       <% end %>
     </div>
