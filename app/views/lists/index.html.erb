@@ -4,7 +4,9 @@
     <div>
       <h1 class="mb-3">The Utlimate watchlist</h1>
       <h2 class="mb-5">Save any kind of movies</h2>
-      <%= link_to "🎬 Create a movie list", new_list_path, class: "btn btn-outline-light btn-lg" %>
+      <%# <%= link_to "🎬 Create a movie list", new_list_path, class: "btn btn-outline-light btn-lg" %>
+      <%= render "lists/modal", list: @list %>
+      <button class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#new_list_modal">🎬 Create a movie list</button>
     </div>
   </div>
 </div>
