@@ -6,7 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 # require "faker"
-require "JSON"
+require "json"
+require 'uri'
 
 puts "Cleaning database..."
 Movie.destroy_all
