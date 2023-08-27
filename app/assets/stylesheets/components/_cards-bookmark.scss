@@ -9,9 +9,13 @@
 }
 
 .card-bookmark {
+  text-align: justify;
   width: 600px;
   border-radius: 1px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   a {
     color: $light-gray;
@@ -20,7 +24,9 @@
 }
 
 .bookmark-details {
-  p {
+  margin-top: auto;
+
+  div {
     flex-grow: 2;
     font-style: italic;
   }

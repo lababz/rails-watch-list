@@ -4,7 +4,7 @@
     <div class="modal-content">
       <!-- Modal Header Start -->
       <div class="modal-header">
-        <h4 class="modal-title">Add a movie to <%= list.name %></h4>
+        <h3 class="modal-title">Add a movie to <%= list.name %></h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <%= simple_form_for [list, bookmark] do |f| %>
@@ -15,7 +15,7 @@
         </div>
         <!-- Modal Footer Start -->
         <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa-solid fa-xmark" style="color: #ffffff;"></i> Cancel</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa-solid fa-xmark" style="color: #ffffff;"></i> Cancel</button>
          <%= f.submit "Add movie", class: "btn btn-primary" %>
         </div>
       <% end %>

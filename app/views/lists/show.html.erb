@@ -8,7 +8,7 @@
       <% else %>
         <div class="mb-3"> <%= pluralize(@list.movies.size, "movie") %> </div>
       <% end %>
-      <button class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#new_movie_modal"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Add a movie</button>
+      <button class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#new_movie_modal"><span class="fa-solid fa-plus"></span>  Add a movie</button>
       <!-- Render to bookmarks/modal -->
       <%= render "bookmarks/modal", list: @list, bookmark: @bookmark %>
     </div>
@@ -20,14 +20,14 @@
   <!-- Cards container Start -->
     <div class="cards-bookmark">
       <% @list.movies.each do |movie| %>
-        <div class="card card-bookmark">
+        <div class="card-bookmark">
           <%= image_tag movie.poster_url, alt: movie.title, class: "card-img-top" %>
-          <div class="card-body">
-            <h5 class="card-title"><%= movie.title %> <span class="text-muted font-weight-normal">• <%= movie.rating %> </span><i class="fas fa-star star-yellow" style="color: #ffca57;"></i></h5>
-            <p class="card-text"><%= movie.overview %></p>
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="card-title mb-2"><%= movie.title %> <span class="text-muted font-weight-normal">• <%= movie.rating %> </span><i class="fas fa-star star-yellow" style="color: #ffca57;"></i></h5>
+            <p class="card-text mb-4"><%= movie.overview %></p>
             <div class="bookmark-details d-flex">
               <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-              <p><i class="fa-solid fa-bookmark"></i> <%= bookmark.comment %></p>
+              <div><i class="fa-solid fa-bookmark"></i>   <%= bookmark.comment %></div>
               <%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %>
             </div>
           </div>
