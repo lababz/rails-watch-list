@@ -1,34 +1,37 @@
 <!-- Hero Start -->
-<div class="cover p-5 text-center bg-image rounded-3" style="
-    background-image: url('https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');">
-  <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-    <div class="d-flex justify-content-center align-items-center h-100">
-      <div class="text-white">
-        <h1 class="mb-3"><%= @list.name %></h1>
-        <% if @list.movies.empty? %>
-          <div class="mb-3">You haven't saved any movies yet!</div>
-        <% else %>
-          <div class="mb-3"> <%= pluralize(@list.movies.size, "movie") %> </div>
-        <% end %>
-        <button class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#new_movie_modal"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Add a movie</button>
-        <!-- Render to bookmarks/modal -->
-        <%= render "bookmarks/modal", list: @list, bookmark: @bookmark %>
-      </div>
+<div class="cover p-5 text-center bg-image rounded-3" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(<%= @list.photo.attached? ? cl_image_path(@list.photo.key) : asset_path('list_background.jpg') %>)">
+  <div class="d-flex justify-content-center align-items-center h-100">
+    <div class="text-white">
+      <h1 class="mb-3"><%= @list.name %></h1>
+      <% if @list.movies.empty? %>
+        <div class="mb-3">You haven't saved any movies yet!</div>
+      <% else %>
+        <div class="mb-3"> <%= pluralize(@list.movies.size, "movie") %> </div>
+      <% end %>
+      <button class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#new_movie_modal"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Add a movie</button>
+      <!-- Render to bookmarks/modal -->
+      <%= render "bookmarks/modal", list: @list, bookmark: @bookmark %>
     </div>
   </div>
 </div>
 <!-- Hero End -->
 <!-- Main container Start -->
-<div class="container py-5">
+<div class="container container-bookmark d-flex py-5">
   <!-- Cards container Start -->
-  <div class="container">
-     <% @list.movies.each do |movie| %>
-        <p><% bookmark = Bookmark.find_by(list: @list, movie: movie) %></p>
-        <p><%= image_tag movie.poster_url, alt: movie.title, class: "movie-img rounded-top" %></p>
-        <p><%= movie.title %></p>
-        <p><%= movie.overview %></p>
-        <p><%= bookmark.comment %></p>
-        <p><%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %></p>
+    <div class="cards-bookmark">
+      <% @list.movies.each do |movie| %>
+        <div class="card card-bookmark">
+          <%= image_tag movie.poster_url, alt: movie.title, class: "card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= movie.title %> <span class="text-muted font-weight-normal">• <%= movie.rating %> </span><i class="fas fa-star star-yellow" style="color: #ffca57;"></i></h5>
+            <p class="card-text"><%= movie.overview %></p>
+            <div class="bookmark-details d-flex">
+              <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+              <p><i class="fa-solid fa-bookmark"></i> <%= bookmark.comment %></p>
+              <%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %>
+            </div>
+          </div>
+        </div>
       <% end %>
-  </div>
+    </div>
 </div>

@@ -1,1 +1,50 @@
-// Specific CSS for your home-page
+body {
+  background-color: $light-gray;
+}
+
+.cover {
+  background-size: cover;
+  background-position: center;
+}
+
+
+.cards {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+h1, h2 {
+  color: $light-gray;
+}
+
+h3 {
+  margin-bottom: 20px;
+}
+
+/*Media Queries*/
+
+/*Smallest device*/
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

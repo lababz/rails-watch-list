@@ -1,29 +1,22 @@
 <!-- Hero Start -->
-<div class="cover p-5 text-center bg-image rounded-3" style="
-    background-image: url('https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');">
-  <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-    <div class="d-flex justify-content-center align-items-center h-100">
-      <div class="text-white">
-        <h1 class="mb-3">The Utlimate watchlist</h1>
-        <h2 class="mb-3">Save any kind of movies</h2>
-        <%= link_to "Create a movie list", new_list_path, class: "btn btn-outline-light btn-lg" %>
-      </div>
+<div class="cover p-5 text-center bg-image rounded-3" style="background-image: url('https://images.unsplash.com/photo-1574267432553-4b4628081c31');">
+  <div class="d-flex justify-content-center align-items-center h-100">
+    <div>
+      <h1 class="mb-3">The Utlimate watchlist</h1>
+      <h2 class="mb-5">Save any kind of movies</h2>
+      <%= link_to "🎬 Create a movie list", new_list_path, class: "btn btn-outline-light btn-lg" %>
     </div>
   </div>
 </div>
-<!-- Hero End -->
-<!-- Main container Start -->
+<!-- Main container -->
 <div class="container py-5">
   <h3>My lists</h3>
-
-  <div class="row justify-content-center align-items-center">
-    <div class="col-md-4 d-flex">
+  <!-- Cards -->
+  <div class="cards-container">
+    <div class="cards">
       <% @lists.each do |list| %>
-        <div class="card bg-dark p-4 m-2" style="width: 400px; height: 100px;">
-          <h5 class="card-title text-center"><%= link_to list[:name], list_path(list[:id]) %></h5>
-        </div>
+        <div class="card-list" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) :asset_path('list_background.jpg') %>)"><%= link_to list[:name], list_path(list[:id]) %></div>
       <% end %>
     </div>
   </div>
 </div>
-<!-- Main container End -->
