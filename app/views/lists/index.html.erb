@@ -13,12 +13,16 @@
 <!-- Main container -->
 <div class="container py-5">
   <h3>My lists</h3>
-  <!-- Cards -->
-  <div class="cards-container">
-    <div class="cards">
-      <% @lists.each do |list| %>
-        <div class="card" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) :asset_path('list_background.jpg') %>)"><%= link_to list[:name], list_path(list[:id]) %></div>
-      <% end %>
+  <% if @lists.empty? %>
+    <p>No list yet!</p>
+  <% else %>
+    <!-- Cards -->
+    <div class="cards-container">
+      <div class="cards">
+        <% @lists.each do |list| %>
+          <div class="card" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) :asset_path('list_background.jpg') %>)"><%= link_to "", list_path(list), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" }, class: "fa-solid fa-xmark" %><%= link_to list[:name], list_path(list[:id]) %></div>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>

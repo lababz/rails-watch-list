@@ -1,0 +1,23 @@
+.cards-review {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 48px;
+  padding: 16px;
+  justify-content: flex-start;
+  margin-bottom: 50px;
+}
+
+.card-review {
+  text-align: justify;
+  width: 600px;
+  border-radius: 1px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  padding: 20px;
+
+  p {
+    font-style: italic;
+    margin-top: 10px;
+  }
+}

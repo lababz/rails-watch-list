@@ -1,5 +1,8 @@
 body {
   background-color: $light-gray;
+  // margin: 0;
+  // padding: 0;
+  // height: 100%;
 }
 
 h1 {
@@ -16,13 +19,35 @@ h3 {
   margin-bottom: 20px;
 }
 
+// .wrapper {
+//   min-height: 100%;
+//   display: flex;
+//   flex-direction: column;
+
+//   main {
+//     flex: 1;
+//   }
+// }
+
 .cover {
   background-size: cover;
   background-position: center;
+  position: relative;
 
   .btn {
     &:hover {
       color: black;
+    }
+  }
+
+  .btn-delete {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: white;
+
+    &:hover {
+      color: $light-gray;
     }
   }
 }
@@ -48,10 +73,21 @@ h3 {
   font-size: 22px;
   font-weight: bolder;
   text-shadow: 0 0 10px rgba(0,0,0,0.7);
+  position: relative;
 
   a {
+    color: white;
     text-decoration: none;
-    color: $light-gray;
+
+    &:hover {
+      color: $light-gray;
+    }
+  }
+
+  .fa-xmark {
+    position: absolute;
+    top: 5px;
+    right: 10px;
   }
 
 }
